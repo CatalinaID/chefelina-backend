@@ -1,6 +1,6 @@
 {
-  "appSecret": "",
-  "pageAccessToken": "EAAPgjrN10d4BAMv6RWN3LZB6nDz805zkWmY22GfiNdmmPKFOHrLZBaQ5Mn0ZAL2aD08Ja43IoMOsbE7OZAODYifBtQSVl4IssffrKoVw85nl2CbKvZBPZCLaybUJkEiDAWNrmQyQ6gLgin2gR4JgCHvJezN4nOEihpphMi2WLA3gZDZD",
-  "validationToken": "",
-  "serverURL": ""
+  "appSecret": "189bd8f488c03b48209da7329bccde31",
+  "pageAccessToken": "EAAPgjrN10d4BAFTrupYK7yim5ZClqzZAMMM62xl7ZBDGZCEFKLJKiWzU79B24zZCPVqi4qeNnrEX8mZANFrfgaZBOTNSqagjEaKBSWTyPSbAsI4Jfyxc48x4VBzJJXrdoh3XFBdIwNzQEwu1ZCZCL5ZCNLtUfKlH6iQZBWTganwYnHdLAZDZD",
+  "validationToken": "1234",
+  "serverURL": "http://chefelina-kitchen.herokuapp.com"
 }
