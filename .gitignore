@@ -39,3 +39,6 @@ jspm_packages
 
 ## Directory-based project format:
 .idea/
+
+## Mac
+.DS_Store
