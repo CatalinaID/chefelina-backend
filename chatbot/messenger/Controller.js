@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var config = require('./config');
+var ReceiverService = require('./ReceiverService');
 
 /*
  * Use your own validation token. Check that the token used in the Webhook
@@ -40,17 +41,17 @@ router.post('/webhook', function (req, res) {
             // Iterate over each messaging event
             pageEntry.messaging.forEach(function(messagingEvent) {
                 if (messagingEvent.optin) {
-                    receivedAuthentication(messagingEvent);
+                    ReceiverService.receivedAuthentication(messagingEvent);
                 } else if (messagingEvent.message) {
-                    receivedMessage(messagingEvent);
+                    ReceiverService.receivedMessage(messagingEvent);
                 } else if (messagingEvent.delivery) {
-                    receivedDeliveryConfirmation(messagingEvent);
+                    ReceiverService.receivedDeliveryConfirmation(messagingEvent);
                 } else if (messagingEvent.postback) {
-                    receivedPostback(messagingEvent);
+                    ReceiverService.receivedPostback(messagingEvent);
                 } else if (messagingEvent.read) {
-                    receivedMessageRead(messagingEvent);
+                    ReceiverService.receivedMessageRead(messagingEvent);
                 } else if (messagingEvent.account_linking) {
-                    receivedAccountLink(messagingEvent);
+                    ReceiverService.receivedAccountLink(messagingEvent);
                 } else {
                     console.log("Webhook received unknown messagingEvent: ", messagingEvent);
                 }

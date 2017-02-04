@@ -5,7 +5,7 @@ var config = require('./config');
  * get the message id in a response
  *
  */
-function callSendAPI(messageData) {
+exports.callSendAPI = function (messageData) {
     request({
         uri: 'https://graph.facebook.com/v2.6/me/messages',
         qs: { access_token: config.PAGE_ACCESS_TOKEN },
@@ -28,13 +28,13 @@ function callSendAPI(messageData) {
             console.error("Failed calling Send API", response.statusCode, response.statusMessage, body.error);
         }
     });
-}
+};
 
 /*
  * Send an image using the Send API.
  *
  */
-function sendImageMessage(recipientId) {
+exports.sendImageMessage = function (recipientId) {
     var messageData = {
         recipient: {
             id: recipientId
@@ -49,14 +49,14 @@ function sendImageMessage(recipientId) {
         }
     };
 
-    callSendAPI(messageData);
-}
+    this.callSendAPI(messageData);
+};
 
 /*
  * Send a Gif using the Send API.
  *
  */
-function sendGifMessage(recipientId) {
+exports.sendGifMessage = function (recipientId) {
     var messageData = {
         recipient: {
             id: recipientId
@@ -70,15 +70,15 @@ function sendGifMessage(recipientId) {
             }
         }
     };
-
-    callSendAPI(messageData);
-}
+    
+    this.callSendAPI(messageData);
+};
 
 /*
  * Send audio using the Send API.
  *
  */
-function sendAudioMessage(recipientId) {
+exports.sendAudioMessage = function (recipientId) {
     var messageData = {
         recipient: {
             id: recipientId
@@ -93,14 +93,14 @@ function sendAudioMessage(recipientId) {
         }
     };
 
-    callSendAPI(messageData);
-}
+    this.callSendAPI(messageData);
+};
 
 /*
  * Send a video using the Send API.
  *
  */
-function sendVideoMessage(recipientId) {
+exports.sendVideoMessage = function (recipientId) {
     var messageData = {
         recipient: {
             id: recipientId
@@ -115,14 +115,14 @@ function sendVideoMessage(recipientId) {
         }
     };
 
-    callSendAPI(messageData);
-}
+    this.callSendAPI(messageData);
+};
 
 /*
  * Send a file using the Send API.
  *
  */
-function sendFileMessage(recipientId) {
+exports.sendFileMessage = function (recipientId) {
     var messageData = {
         recipient: {
             id: recipientId
@@ -137,14 +137,14 @@ function sendFileMessage(recipientId) {
         }
     };
 
-    callSendAPI(messageData);
-}
+    this.callSendAPI(messageData);
+};
 
 /*
  * Send a text message using the Send API.
  *
  */
-function sendTextMessage(recipientId, messageText) {
+exports.sendTextMessage = function (recipientId, messageText) {
     var messageData = {
         recipient: {
             id: recipientId
@@ -155,14 +155,14 @@ function sendTextMessage(recipientId, messageText) {
         }
     };
 
-    callSendAPI(messageData);
-}
+    this.callSendAPI(messageData);
+};
 
 /*
  * Send a button message using the Send API.
  *
  */
-function sendButtonMessage(recipientId) {
+exports.sendButtonMessage = function (recipientId) {
     var messageData = {
         recipient: {
             id: recipientId
@@ -191,14 +191,14 @@ function sendButtonMessage(recipientId) {
         }
     };
 
-    callSendAPI(messageData);
-}
+    this.callSendAPI(messageData);
+};
 
 /*
  * Send a Structured Message (Generic Message type) using the Send API.
  *
  */
-function sendGenericMessage(recipientId) {
+exports.sendGenericMessage = function (recipientId) {
     var messageData = {
         recipient: {
             id: recipientId
@@ -242,14 +242,14 @@ function sendGenericMessage(recipientId) {
         }
     };
 
-    callSendAPI(messageData);
-}
+    this.callSendAPI(messageData);
+};
 
 /*
  * Send a receipt message using the Send API.
  *
  */
-function sendReceiptMessage(recipientId) {
+exports.sendReceiptMessage = function (recipientId) {
     // Generate a random receipt ID as the API requires a unique ID
     var receiptId = "order" + Math.floor(Math.random()*1000);
 
@@ -308,14 +308,14 @@ function sendReceiptMessage(recipientId) {
         }
     };
 
-    callSendAPI(messageData);
-}
+    this.callSendAPI(messageData);
+};
 
 /*
  * Send a message with Quick Reply buttons.
  *
  */
-function sendQuickReply(recipientId) {
+exports.sendQuickReply = function (recipientId) {
     var messageData = {
         recipient: {
             id: recipientId
@@ -342,14 +342,14 @@ function sendQuickReply(recipientId) {
         }
     };
 
-    callSendAPI(messageData);
-}
+    this.callSendAPI(messageData);
+};
 
 /*
  * Send a read receipt to indicate the message has been read
  *
  */
-function sendReadReceipt(recipientId) {
+exports.sendReadReceipt = function (recipientId) {
     console.log("Sending a read receipt to mark message as seen");
 
     var messageData = {
@@ -359,14 +359,14 @@ function sendReadReceipt(recipientId) {
         sender_action: "mark_seen"
     };
 
-    callSendAPI(messageData);
-}
+    this.callSendAPI(messageData);
+};
 
 /*
  * Turn typing indicator on
  *
  */
-function sendTypingOn(recipientId) {
+exports.sendTypingOn = function (recipientId) {
     console.log("Turning typing indicator on");
 
     var messageData = {
@@ -376,14 +376,14 @@ function sendTypingOn(recipientId) {
         sender_action: "typing_on"
     };
 
-    callSendAPI(messageData);
-}
+    this.callSendAPI(messageData);
+};
 
 /*
  * Turn typing indicator off
  *
  */
-function sendTypingOff(recipientId) {
+exports.sendTypingOff = function (recipientId) {
     console.log("Turning typing indicator off");
 
     var messageData = {
@@ -393,14 +393,14 @@ function sendTypingOff(recipientId) {
         sender_action: "typing_off"
     };
 
-    callSendAPI(messageData);
-}
+    this.callSendAPI(messageData);
+};
 
 /*
  * Send a message with the account linking call-to-action
  *
  */
-function sendAccountLinking(recipientId) {
+exports.sendAccountLinking = function (recipientId) {
     var messageData = {
         recipient: {
             id: recipientId
@@ -420,5 +420,5 @@ function sendAccountLinking(recipientId) {
         }
     };
 
-    callSendAPI(messageData);
-}
+    this.callSendAPI(messageData);
+};

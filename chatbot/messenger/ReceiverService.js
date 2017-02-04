@@ -1,4 +1,4 @@
-
+var SenderService = require('./SenderService');
 
 /*
  * Authorization Event
@@ -8,7 +8,7 @@
  * https://developers.facebook.com/docs/messenger-platform/webhook-reference/authentication
  *
  */
-function receivedAuthentication(event) {
+exports.receivedAuthentication = function (event) {
     var senderID = event.sender.id;
     var recipientID = event.recipient.id;
     var timeOfAuth = event.timestamp;
@@ -26,8 +26,8 @@ function receivedAuthentication(event) {
 
     // When an authentication is received, we'll send a message back to the sender
     // to let them know it was successful.
-    sendTextMessage(senderID, "Authentication successful");
-}
+    SenderService.sendTextMessage(senderID, "Authentication successful");
+};
 
 /*
  * Message Event
@@ -43,7 +43,7 @@ function receivedAuthentication(event) {
  * then we'll simply confirm that we've received the attachment.
  *
  */
-function receivedMessage(event) {
+exports.receivedMessage = function (event) {
     var senderID = event.sender.id;
     var recipientID = event.recipient.id;
     var timeOfMessage = event.timestamp;
@@ -73,7 +73,7 @@ function receivedMessage(event) {
         console.log("Quick reply for message %s with payload %s",
             messageId, quickReplyPayload);
 
-        sendTextMessage(senderID, "Quick reply tapped");
+        SenderService.sendTextMessage(senderID, "Quick reply tapped");
         return;
     }
 
@@ -84,64 +84,64 @@ function receivedMessage(event) {
         // the text we received.
         switch (messageText) {
             case 'image':
-                sendImageMessage(senderID);
+                SenderService.sendImageMessage(senderID);
                 break;
 
             case 'gif':
-                sendGifMessage(senderID);
+                SenderService.sendGifMessage(senderID);
                 break;
 
             case 'audio':
-                sendAudioMessage(senderID);
+                SenderService.sendAudioMessage(senderID);
                 break;
 
             case 'video':
-                sendVideoMessage(senderID);
+                SenderService.sendVideoMessage(senderID);
                 break;
 
             case 'file':
-                sendFileMessage(senderID);
+                SenderService.sendFileMessage(senderID);
                 break;
 
             case 'button':
-                sendButtonMessage(senderID);
+                SenderService.sendButtonMessage(senderID);
                 break;
 
             case 'generic':
-                sendGenericMessage(senderID);
+                SenderService.sendGenericMessage(senderID);
                 break;
 
             case 'receipt':
-                sendReceiptMessage(senderID);
+                SenderService.sendReceiptMessage(senderID);
                 break;
 
             case 'quick reply':
-                sendQuickReply(senderID);
+                SenderService.sendQuickReply(senderID);
                 break;
 
             case 'read receipt':
-                sendReadReceipt(senderID);
+                SenderService.sendReadReceipt(senderID);
                 break;
 
             case 'typing on':
-                sendTypingOn(senderID);
+                SenderService.sendTypingOn(senderID);
                 break;
 
             case 'typing off':
-                sendTypingOff(senderID);
+                SenderService.sendTypingOff(senderID);
                 break;
 
             case 'account linking':
-                sendAccountLinking(senderID);
+                SenderService.sendAccountLinking(senderID);
                 break;
 
             default:
-                sendTextMessage(senderID, messageText);
+                SenderService.sendTextMessage(senderID, messageText);
         }
     } else if (messageAttachments) {
-        sendTextMessage(senderID, "Message with attachment received");
+        SenderService.sendTextMessage(senderID, "Message with attachment received");
     }
-}
+};
 
 
 /*
@@ -151,7 +151,7 @@ function receivedMessage(event) {
  * these fields at https://developers.facebook.com/docs/messenger-platform/webhook-reference/message-delivered
  *
  */
-function receivedDeliveryConfirmation(event) {
+exports.receivedDeliveryConfirmation = function (event) {
     var senderID = event.sender.id;
     var recipientID = event.recipient.id;
     var delivery = event.delivery;
@@ -167,7 +167,7 @@ function receivedDeliveryConfirmation(event) {
     }
 
     console.log("All message before %d were delivered.", watermark);
-}
+};
 
 
 /*
@@ -177,7 +177,7 @@ function receivedDeliveryConfirmation(event) {
  * https://developers.facebook.com/docs/messenger-platform/webhook-reference/postback-received
  *
  */
-function receivedPostback(event) {
+exports.receivedPostback = function (event) {
     var senderID = event.sender.id;
     var recipientID = event.recipient.id;
     var timeOfPostback = event.timestamp;
@@ -191,8 +191,8 @@ function receivedPostback(event) {
 
     // When a postback is called, we'll send a message back to the sender to
     // let them know it was successful
-    sendTextMessage(senderID, "Postback called");
-}
+    SenderService.sendTextMessage(senderID, "Postback called");
+};
 
 /*
  * Message Read Event
@@ -201,7 +201,7 @@ function receivedPostback(event) {
  * https://developers.facebook.com/docs/messenger-platform/webhook-reference/message-read
  *
  */
-function receivedMessageRead(event) {
+exports.receivedMessageRead = function (event) {
     var senderID = event.sender.id;
     var recipientID = event.recipient.id;
 
@@ -211,7 +211,7 @@ function receivedMessageRead(event) {
 
     console.log("Received message read event for watermark %d and sequence " +
         "number %d", watermark, sequenceNumber);
-}
+};
 
 /*
  * Account Link Event
@@ -221,7 +221,7 @@ function receivedMessageRead(event) {
  * https://developers.facebook.com/docs/messenger-platform/webhook-reference/account-linking
  *
  */
-function receivedAccountLink(event) {
+exports.receivedAccountLink = function (event) {
     var senderID = event.sender.id;
     var recipientID = event.recipient.id;
 
@@ -230,4 +230,4 @@ function receivedAccountLink(event) {
 
     console.log("Received account link event with for user %d with status %s " +
         "and auth code %s ", senderID, status, authCode);
-}
+};
