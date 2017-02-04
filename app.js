@@ -5,8 +5,7 @@ const
     bodyParser = require('body-parser'),
     config = require('config'),
     express = require('express'),
-    https = require('https'),
-    request = require('request');
+    https = require('https');
 
 var services = require('./common/services');
 var app = express();
