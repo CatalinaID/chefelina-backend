@@ -1,6 +1,10 @@
 {
-  "appSecret": "189bd8f488c03b48209da7329bccde31",
-  "pageAccessToken": "EAAPgjrN10d4BAFTrupYK7yim5ZClqzZAMMM62xl7ZBDGZCEFKLJKiWzU79B24zZCPVqi4qeNnrEX8mZANFrfgaZBOTNSqagjEaKBSWTyPSbAsI4Jfyxc48x4VBzJJXrdoh3XFBdIwNzQEwu1ZCZCL5ZCNLtUfKlH6iQZBWTganwYnHdLAZDZD",
-  "validationToken": "1234",
-  "serverURL": "http://chefelina-kitchen.herokuapp.com"
+  "main": {
+    "serverURL": "http://chefelina-kitchen.herokuapp.com"
+  },
+  "messenger": {
+    "appSecret": "189bd8f488c03b48209da7329bccde31",
+    "pageAccessToken": "EAAPgjrN10d4BAFTrupYK7yim5ZClqzZAMMM62xl7ZBDGZCEFKLJKiWzU79B24zZCPVqi4qeNnrEX8mZANFrfgaZBOTNSqagjEaKBSWTyPSbAsI4Jfyxc48x4VBzJJXrdoh3XFBdIwNzQEwu1ZCZCL5ZCNLtUfKlH6iQZBWTganwYnHdLAZDZD",
+    "validationToken": "1234"
+  }
 }
