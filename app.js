@@ -6,8 +6,7 @@ const
     config = require('config'),
     crypto = require('crypto'),
     express = require('express'),
-    https = require('https'),
-    request = require('request');
+    https = require('https');
 
 var services = require('./common/services');
 var app = express();
